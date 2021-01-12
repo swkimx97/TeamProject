@@ -7,11 +7,11 @@
         product history list -> productHistoryList
     Table 명:
         product table -> ProductTable
-    Table 콜롬 foreign key
-        foreign key를 이용할때는 무슨 tabled의 콜롬을 이용하는지 정확히 쓰기
+3: Table 콜롬 foreign key
+        foreign key를 이용할때는 무슨 table의 콜롬을 이용하는지 정확히 쓰기
         ProductTable 안에있는 ID 콜롬이 ProductHistory 태이블에 이용할꺼면...
             CREATE TABLE ProductHistory (
                 int ID PRIMARY KEY,
                 int ProductTableID FOREIGN KEY REFERENCES ProductTable(ID)
             );
-        
+ 4: 
