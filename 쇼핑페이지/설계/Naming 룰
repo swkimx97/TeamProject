@@ -12,6 +12,7 @@
         ProductTable 안에있는 ID 콜롬이 ProductHistory 태이블에 이용할꺼면...
             CREATE TABLE ProductHistory (
                 int ID PRIMARY KEY,
-                int ProductTableID FOREIGN KEY REFERENCES ProductTable(ID)
+                int ProductTable_ID FOREIGN KEY REFERENCES ProductTable(ID)
             );
- 4: 
+        Foreign Key를 이용할때만 _ 쓰기.
+        _ 다음에 나오는 콜롬명도 끌고오는 table의 콜롬명와 동일해야된다
