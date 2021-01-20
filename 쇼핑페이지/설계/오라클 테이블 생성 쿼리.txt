@@ -28,7 +28,18 @@ create table Orders(
     CONSTRAINT ShopUser_Orders_fk_Key FOREIGN KEY(ShopUser_ID) REFERENCES ShopUser(ID)
 )
 
-CREATE table OrderProduct(
+Create table Product(
+    ID INT PRIMARY KEY,
+    Category_ID INT Not null,
+    Name VARCHAR2(40) Not null,
+    Price INT Not null,
+    Description VARCHAR2(1000) Not null,
+    Discount INT,
+    ProductDate Date DEFAULT sysdate not null,
+    CONSTRAINT Category_Product_fk_Key FOREIGN KEY(Category_ID) REFERENCES Category(ID)
+)
+
+CREATE table OrdersProduct(
     ID INT PRIMARY KEY,
     Order_ID INT Not null,
     Product_ID INT Not null,
@@ -41,16 +52,7 @@ CREATE table OrderProduct(
     CONSTRAINT Orders_OrderProduct_fk_Key FOREIGN KEY(Order_ID) REFERENCES Orders(ID)
 )
 
-Create table Product(
-    ID INT PRIMARY KEY,
-    Category_ID INT Not null,
-    Name VARCHAR2(40) Not null,
-    Price INT Not null,
-    Description VARCHAR2(1000) Not null,
-    Discount INT,
-    ProductDate Date DEFAULT sysdate not null,
-    CONSTRAINT Category_Product_fk_Key FOREIGN KEY(Category_ID) REFERENCES Category(ID)
-)
+
 
 create table Category(
     ID INT PRIMARY KEY,
@@ -76,23 +78,23 @@ create table CartProduct(
 
 create table ReviewBoard(
     ID INT PRIMARY KEY,
-    User_ID INT not null,
+    ShopUser_ID INT not null,
     Product_ID INT not null,
     Title VARCHAR2(70) not null,
     Content VARCHAR2(1200) not null,
     Point INT not null,
     ReviewDate DATE DEFAULT sysdate not null,
-    CONSTRAINT ShopUser_ReviewBoard_fk_key FOREIGN KEY(User_ID) REFERENCES ShopUser(ID),
+    CONSTRAINT ShopUser_ReviewBoard_fk_key FOREIGN KEY(ShopUser_ID) REFERENCES ShopUser(ID),
     CONSTRAINT Product_ReviewBoard_fk_key FOREIGN KEY(Product_ID) REFERENCES Product(ID)
 )
 
 create table ProductQA(
     ID INT not null,
-    User_ID INT not null,
+    ShopUser_ID INT not null,
     Product_ID INT not null,
     QADate DATE DEFAULT sysdate not null,
     Title VARCHAR2(120) not null,
     Content VARCHAR2(2000) not null,
-    CONSTRAINT ShopUser_ProductQA_fk_key FOREIGN KEY(User_ID) REFERENCES ShopUser(ID),
+    CONSTRAINT ShopUser_ProductQA_fk_key FOREIGN KEY(ShopUser_ID) REFERENCES ShopUser(ID),
     CONSTRAINT Product_ProductQA_fk_key FOREIGN KEY(Product_ID) REFERENCES Product(ID)
 )
