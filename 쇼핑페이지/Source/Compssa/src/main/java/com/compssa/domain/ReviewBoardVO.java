@@ -6,9 +6,9 @@ import java.util.Date;
 @Data
 public class ReviewBoardVO {
 	private Long ID;
-	private Long User_ID;
+	private Long ShopUser_ID;
 	private Long Product_ID;
+	private String Title;
 	private String Content;
-	private int Point;
-	private Date Date;
+	private Date ReviewDate;
 }

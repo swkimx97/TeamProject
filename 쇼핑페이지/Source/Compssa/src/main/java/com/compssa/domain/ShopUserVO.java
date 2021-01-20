@@ -4,7 +4,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class UserVO {
+public class ShopUserVO {
 	private Long ID;
 	private String UserName;
 	private String PW;

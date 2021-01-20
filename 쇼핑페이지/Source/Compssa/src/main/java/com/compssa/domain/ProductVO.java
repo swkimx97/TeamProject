@@ -11,5 +11,5 @@ public class ProductVO {
 	private int Price;
 	private String Description;
 	private int Discount;
-	private Date Date;
+	private Date ProductDate;
 }

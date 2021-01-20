@@ -6,8 +6,8 @@ import java.util.Date;
 @Data
 public class OrderVO {
 	private Long ID;
-	private Long User_ID;
-	private Date Date;
+	private Long ShopUser_ID;
+	private Date OrderDate;
 	private int TotalPrice;
 	private String SenderName;
 	private String ReceiverName;

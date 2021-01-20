@@ -8,7 +8,7 @@ public class ProductQAVO {
 	private Long ID;
 	private Long User_ID;
 	private Long Product_ID;
-	private Date Date;
+	private Date QADate;
 	private String Title;
 	private String Content;
 }

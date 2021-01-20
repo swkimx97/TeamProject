@@ -3,7 +3,7 @@ package com.compssa.domain;
 import lombok.Data;
 
 @Data
-public class OrderDetailVO {
+public class OrderProductVO {
 	private Long ID;
 	private Long Order_ID;
 	private Long Product_ID;
