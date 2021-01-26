@@ -1,9 +1,9 @@
-package com.compssa.mapper;
+package com.compssa.service;
 
 import java.util.List;
 
 import com.compssa.domain.*;
 
-public interface MainMapper {
+public interface MainService {
 	public List<ProductVO> getList();
 }

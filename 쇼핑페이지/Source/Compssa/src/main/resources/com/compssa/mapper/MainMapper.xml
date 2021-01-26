@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.compssa.mapper.MainMapper">
+
+	<select id="getList" resultType="com.compssa.domain.ProductVO">
+	<![CDATA[
+		select * from Product where ID >= 0 and rownum <= 6 
+		]]>
+	</select>
+</mapper>
