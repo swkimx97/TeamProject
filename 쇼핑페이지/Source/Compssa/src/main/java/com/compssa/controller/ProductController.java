@@ -39,5 +39,6 @@ public class ProductController {
 
 		model.addAttribute("product", service.getProduct(ID));
 		model.addAttribute("reviewList", service.getReviewList(ID));
+		model.addAttribute("categoryList", service.getCategoryList());
 	}
 }

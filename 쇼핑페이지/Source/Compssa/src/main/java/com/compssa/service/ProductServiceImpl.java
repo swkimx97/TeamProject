@@ -25,4 +25,9 @@ public class ProductServiceImpl implements ProductService{
 	public List<ReviewBoardVO> getReviewList(Long ID) {
 		return mapper.getReviewList(ID);
 	}
+	
+	@Override
+	public List<CategoryVO> getCategoryList() {
+		return mapper.getCategoryList();
+	}
 }

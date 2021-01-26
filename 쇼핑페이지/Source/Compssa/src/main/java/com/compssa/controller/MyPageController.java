@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import com.compssa.service.MyPageService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -30,9 +31,10 @@ import com.compssa.domain.*;
 @AllArgsConstructor
 
 public class MyPageController {
-	@GetMapping("/main")
-	public String main() {
-		return "mypage/main";
+	private MyPageService service;
+
+	@GetMapping("/reviewHistory")
+	public void main(Model model) {		
+		model.addAttribute("categoryList", service.getCategoryList());
 	}
-	
 }

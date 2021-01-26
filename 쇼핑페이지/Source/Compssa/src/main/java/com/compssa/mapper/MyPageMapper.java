@@ -1,5 +1,9 @@
 package com.compssa.mapper;
 
-public class MyPageMapper {
+import java.util.List;
 
+import com.compssa.domain.*;
+
+public interface MyPageMapper {
+	public List<CategoryVO> getCategoryList();
 }
