@@ -37,6 +37,7 @@ public class ProductController {
 	@GetMapping({"/productDetail"})
 	public void get(@RequestParam("ID") Long ID, Model model) {
 
-		model.addAttribute("product", service.get(ID));
+		model.addAttribute("product", service.getProduct(ID));
+		model.addAttribute("reviewList", service.getReviewList(ID));
 	}
 }

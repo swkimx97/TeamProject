@@ -2,8 +2,7 @@
 <%@ page session="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <%@include file="../includes/header.jsp"%>
 
@@ -14,11 +13,34 @@
 	    <div class="card mt-4">
 		<img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
 		<div class="card-body">
-			<h3 class="card-title">${product.name }</h3>
+			<h3 class="card-title">${product.name}</h3>
 			<h4>$${product.price }</h4>
 			<p class="card-text">${product.description}</p>
-			<span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-			4.0 stars
+			<c:set var = "point" value = "${product.point}"/>
+			<c:choose>
+		        <c:when test="${point eq 0}">
+		        	<span class="text-warning">&#9734; &#9734; &#9734; &#9734; &#9734;</span>
+		        </c:when>
+		        <c:when test="${point eq 1}">
+		        	<span class="text-warning">&#9733; &#9734; &#9734; &#9734; &#9734;</span>
+		        </c:when>
+		        <c:when test="${point eq 2}">
+		        	<span class="text-warning">&#9733; &#9733; &#9734; &#9734; &#9734;</span>
+		        </c:when>
+		        <c:when test="${point eq 3}">
+		        	<span class="text-warning">&#9733; &#9733; &#9733; &#9734; &#9734;</span>
+		        </c:when>
+		        <c:when test="${point eq 4}">
+		        	<span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+		        </c:when>		
+		        <c:when test="${point eq 5}">
+		        	<span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
+		        </c:when>								     						        
+		        <c:otherwise>
+		        	<span class="text-warning">&#9734; &#9734; &#9734; &#9734; &#9734;</span>
+		        </c:otherwise>
+		    </c:choose>
+			${product.point} stars
 		</div>
 	</div>
 	<!-- /.card -->
@@ -29,15 +51,13 @@
 		</div>
           
 		<div class="card-body">
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-			<small class="text-muted">Posted by Anonymous on 3/1/17</small>
-			<hr>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-			<small class="text-muted">Posted by Anonymous on 3/1/17</small>
-			<hr>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-			<small class="text-muted">Posted by Anonymous on 3/1/17</small>
-			<hr>
+			<c:forEach items="${reviewList}" var="review">
+				<h4>${review.title} </h4>
+				<p>${review.content}</p>
+				<small class="text-muted">Posted by ${review.userName} on ${review.reviewDate}</small> <a href="#" class="btn btn-success">Delete Review</a>
+				
+				<hr>
+			</c:forEach>
 			<a href="#" class="btn btn-success">Leave a Review</a>
 		</div>
 	</div>

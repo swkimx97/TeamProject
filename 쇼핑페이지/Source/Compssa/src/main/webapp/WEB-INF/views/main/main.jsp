@@ -5,7 +5,7 @@
 <html>
 
 <%@include file="../includes/header.jsp"%>		
-	
+
 			<div class="col-lg-9">		
 				<div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
 					<ol class="carousel-indicators">
@@ -35,7 +35,7 @@
 				</div>
 				
 				<div class="row">
-					<c:forEach items="${list}" var="product">
+					<c:forEach items="${productList}" var="product">
 						<div class="col-lg-4 col-md-6 mb-4">
 							<div class="card h-100">
 								<a class='move' href='<c:out value="${product.ID}"/>'><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
@@ -47,7 +47,30 @@
 										<p class="overflow-auto" style="height:50px">${product.description}</p>
 								</div>
 								<div class="card-footer">
-									<small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+									<c:set var = "point" value = "${product.point}"/>
+									<c:choose>
+								        <c:when test="${point eq 0}">
+								        	<small class="text-muted">&#9734; &#9734; &#9734; &#9734; &#9734;</small>
+								        </c:when>
+								        <c:when test="${point eq 1}">
+								        	<small class="text-muted">&#9733; &#9734; &#9734; &#9734; &#9734;</small>
+								        </c:when>
+								        <c:when test="${point eq 2}">
+								        	<small class="text-muted">&#9733; &#9733; &#9734; &#9734; &#9734;</small>
+								        </c:when>
+								        <c:when test="${point eq 3}">
+								        	<small class="text-muted">&#9733; &#9733; &#9733; &#9734; &#9734;</small>
+								        </c:when>
+								        <c:when test="${point eq 4}">
+								        	<small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+								        </c:when>		
+								        <c:when test="${point eq 5}">
+								        	<small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9733;</small>
+								        </c:when>								     						        
+								        <c:otherwise>
+								        	<small class="text-muted">&#9734; &#9734; &#9734; &#9734; &#9734;</small>
+								        </c:otherwise>
+								    </c:choose>
 								</div>
 							</div>
 						</div>

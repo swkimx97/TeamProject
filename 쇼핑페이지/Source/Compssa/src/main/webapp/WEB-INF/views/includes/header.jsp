@@ -52,8 +52,8 @@
 			<div class="col-lg-3">
 				<h1 class="my-4">Shop 한글</h1>
 				<div class="list-group">
-					<a href="#" class="list-group-item">Category 1</a>
-					<a href="#" class="list-group-item">Category 2</a>
-					<a href="#" class="list-group-item">Category 3</a>
+					<c:forEach items="${categoryList}" var="category">
+						<a href="#" class="list-group-item">${category.name}</a>
+					</c:forEach>
 				</div>	
 			</div>

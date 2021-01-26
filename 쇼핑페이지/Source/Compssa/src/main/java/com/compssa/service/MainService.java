@@ -5,5 +5,6 @@ import java.util.List;
 import com.compssa.domain.*;
 
 public interface MainService {
-	public List<ProductVO> getList();
+	public List<ProductVO> getProductList();
+	public List<CategoryVO> getCategoryList();
 }

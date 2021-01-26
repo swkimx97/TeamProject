@@ -4,9 +4,15 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.compssa.mapper.MainMapper">
 
-	<select id="getList" resultType="com.compssa.domain.ProductVO">
-	<![CDATA[
-		select * from Product where ID >= 0 and rownum <= 6 
+	<select id="getProductList" resultType="com.compssa.domain.ProductVO">
+		<![CDATA[
+			select * from Product where ID > 0 and rownum <= 6 
+		]]>
+	</select>
+	
+	<select id="getCategoryList" resultType="com.compssa.domain.CategoryVO">
+		<![CDATA[
+			select * from ProductCategory where ID > 0 and parentID IS NULL
 		]]>
 	</select>
 </mapper>

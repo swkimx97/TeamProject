@@ -12,4 +12,5 @@ public class ProductVO {
 	private String Description;
 	private int Discount;
 	private Date ProductDate;
+	private int Point;
 }

@@ -17,7 +17,12 @@ public class MainServiceImpl implements MainService{
 	private MainMapper mapper;
 
 	@Override
-	public List<ProductVO> getList() {
-		return mapper.getList();		
+	public List<ProductVO> getProductList() {
+		return mapper.getProductList();		
+	}
+
+	@Override
+	public List<CategoryVO> getCategoryList() {
+		return mapper.getCategoryList();
 	}
 }

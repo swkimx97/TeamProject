@@ -35,6 +35,7 @@ public class MainController {
 
 	@GetMapping("/main")
 	public void main(Model model) {		
-		model.addAttribute("list", service.getList());
+		model.addAttribute("productList", service.getProductList());
+		model.addAttribute("categoryList", service.getCategoryList());
 	}
 }

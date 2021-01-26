@@ -4,8 +4,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.compssa.mapper.ProductMapper">
 
-	<select id="read" resultType="com.compssa.domain.ProductVO">
+	<select id="getProduct" resultType="com.compssa.domain.ProductVO">
 		select * from product where ID =
 		#{ID}
+	</select>
+	
+	<select id="getReviewList" resultType="com.compssa.domain.ReviewBoardVO">
+		<![CDATA[
+			select reviewBoard.*, shopUser.username from reviewBoard left join shopUser on reviewBoard.shopUser_ID = shopUser.id where product_id = #{ID}
+		]]>
 	</select>
 </mapper>

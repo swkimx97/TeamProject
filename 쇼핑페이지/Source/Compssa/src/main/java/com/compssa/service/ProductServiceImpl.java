@@ -17,6 +17,12 @@ public class ProductServiceImpl implements ProductService{
 	private ProductMapper mapper;
 
 	@Override
-	public ProductVO get(Long ID) {
-		return mapper.read(ID);	}
+	public ProductVO getProduct(Long ID) {
+		return mapper.getProduct(ID);
+	}
+
+	@Override
+	public List<ReviewBoardVO> getReviewList(Long ID) {
+		return mapper.getReviewList(ID);
+	}
 }
