@@ -10,5 +10,7 @@ public class ReviewBoardVO {
 	private Long Product_ID;
 	private String Title;
 	private String Content;
+	private int Point;
 	private Date ReviewDate;
+	private String UserName;
 }
