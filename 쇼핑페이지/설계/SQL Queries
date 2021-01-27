@@ -1,0 +1,12 @@
+  Main Page Top Products
+select * from Product where ID > 0 and rownum <= 6
+
+  Side Category bar on header
+select * from ProductCategory where ID > 0 and parentID IS NULL
+
+  Printing review on each product detail page
+select reviewBoard.*, shopUser.username from reviewBoard left join shopUser on reviewBoard.shopUser_ID = shopUser.id where product_id = #{ID}
+
+  Inserting product into product table using productcategory and parent id
+insert into product values (seq_product.nextval, (select ID from productcategory where Name='9Gen' AND parentID=(select ID from productcategory where Name='i5')), '인텔 코어i5-10세대 10400', 185680, '인텔 코어i5-10세대 10400', 0, sysdate, 0);
+
