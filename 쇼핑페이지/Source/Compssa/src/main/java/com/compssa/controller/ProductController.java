@@ -34,11 +34,17 @@ import com.compssa.domain.*;
 public class ProductController {
 	private ProductService service;
 
-	@GetMapping({"/productDetail"})
+	@RequestMapping(value="/productDetail", params="ID")
 	public void get(@RequestParam("ID") Long ID, Model model) {
-
-		model.addAttribute("product", service.getProduct(ID));
-		model.addAttribute("reviewList", service.getReviewList(ID));
+		model.addAttribute("product", service.getProductID(ID));
+		model.addAttribute("reviewList", service.getReviewListID(ID));
+		model.addAttribute("categoryList", service.getCategoryList());
+	}
+	
+	@RequestMapping(value="/productDetail", params="keyword")
+	public void get(@RequestParam("keyword") String keyword, Model model) {
+		model.addAttribute("product", service.getProductKeyword(keyword));
+		model.addAttribute("reviewList", service.getReviewListKeyword(keyword));
 		model.addAttribute("categoryList", service.getCategoryList());
 	}
 }
