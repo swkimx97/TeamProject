@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.compssa.mapper.MemberMapper">
+	<resultMap type="com.compssa.domain.ShopUserVO" id="memberMap">
+		<id property="userid" column="userid"></id>
+		<result property="userid" column="userid"></result>
+		<result property="userpw" column="userpw"></result>
+		<result property="userName" column="username"></result>
+		<result property="regDate" column="regdate"></result>
+		<result property="updateDate" column="updatedate"></result>
+		<collection property="authList" resultMap="authMap"></collection>		
+	</resultMap>
+	
+	<resultMap type="com.compssa.domain.AuthVO" id="authMap">
+		<result property="userid" column="userid"></result>
+		<result property="auth" column="auth"></result>
+	</resultMap>
+	
+	<select id="read" resultMap="memberMap">
+		select mem.userid, mem.userpw, mem.username, mem.enabled, mem.regdate, mem.updatedate,
+        auth.auth
+		from Shopuser mem left outer join ShopAuthorities auth
+		on mem.id=auth.id
+		where mem.id=#{userid}
+	</select>
+	
+</mapper>
