@@ -28,10 +28,10 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "/customLogin", method = RequestMethod.GET)
-	public String login(Locale locale, Model model) {
-
-		return "customLogin";
-	}
-	
+//	@RequestMapping(value = "/customLogin", method = RequestMethod.GET)
+//	public String login(Locale locale, Model model) {
+//
+//		return "customLogin";
+//	}
+//	
 }

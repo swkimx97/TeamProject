@@ -25,12 +25,12 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 		
 		//관리자(admin)이면 관리자페이지로 이동
 		if(roleNames.contains("ROLE_ADMIN")) {
-			response.sendRedirect("/admin");
+			response.sendRedirect("/sample/admin");
 			return;
 		}
 		//멤버(member)이면 멤버페이지로 이동
 		if(roleNames.contains("ROLE_MEMBER")) {
-			response.sendRedirect("/");
+			response.sendRedirect("/sample/member");
 			return;
 		}
 		response.sendRedirect("/");
