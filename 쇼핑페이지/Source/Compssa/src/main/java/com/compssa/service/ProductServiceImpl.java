@@ -22,8 +22,13 @@ public class ProductServiceImpl implements ProductService{
 	}
 	
 	@Override
-	public ProductVO getProductKeyword(String keyword) {
+	public List<ProductVO> getProductKeyword(String keyword) {
 		return mapper.getProductKeyword(keyword);
+	}
+	
+	@Override
+	public List<ProductVO> getProductCategory(Long categoryID) {
+		return mapper.getProductCategory(categoryID);
 	}
 
 	@Override

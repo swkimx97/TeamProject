@@ -35,16 +35,28 @@ public class ProductController {
 	private ProductService service;
 
 	@RequestMapping(value="/productDetail", params="ID")
-	public void get(@RequestParam("ID") Long ID, Model model) {
+	public void productDetail(@RequestParam("ID") Long ID, Model model) {
 		model.addAttribute("product", service.getProductID(ID));
 		model.addAttribute("reviewList", service.getReviewListID(ID));
 		model.addAttribute("categoryList", service.getCategoryList());
 	}
 	
 	@RequestMapping(value="/productDetail", params="keyword")
-	public void get(@RequestParam("keyword") String keyword, Model model) {
-		model.addAttribute("product", service.getProductKeyword(keyword));
+	public void productDetail(@RequestParam("keyword") String keyword, Model model) {
+		model.addAttribute("productList", service.getProductKeyword(keyword));
 		model.addAttribute("reviewList", service.getReviewListKeyword(keyword));
+		model.addAttribute("categoryList", service.getCategoryList());
+	}
+	
+	@RequestMapping(value="/productList", params="keyword")
+	public void productListKeyword(@RequestParam("keyword") String keyword, Model model) {
+		model.addAttribute("productList", service.getProductKeyword(keyword));
+		model.addAttribute("categoryList", service.getCategoryList());
+	}
+	
+	@RequestMapping(value="/productList", params="categoryID")
+	public void productListCategory(@RequestParam("categoryID") Long categoryID, Model model) {
+		model.addAttribute("productList", service.getProductCategory(categoryID));
 		model.addAttribute("categoryList", service.getCategoryList());
 	}
 }

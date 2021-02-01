@@ -10,8 +10,15 @@
 	</select>
 	
 	<select id="getProductKeyword" resultType="com.compssa.domain.ProductVO">
-		select * from product where name =
-		#{keyword}
+		<![CDATA[
+			select * from product where lower(name) like lower('%'||#{keyword}||'%')	
+		]]>
+	</select>
+	
+	<select id="getProductCategory" resultType="com.compssa.domain.ProductVO">
+		<![CDATA[
+			select * from product where productcategory_ID = #{categoryID}	
+		]]>
 	</select>
 	
 	<select id="getReviewListID" resultType="com.compssa.domain.ReviewBoardVO">
@@ -28,7 +35,7 @@
 	
 	<select id="getCategoryList" resultType="com.compssa.domain.CategoryVO">
 		<![CDATA[
-			select * from ProductCategory where ID > 0 and parentID IS NULL
+			select * from ProductCategory where ID > 0
 		]]>
 	</select>
 </mapper>
