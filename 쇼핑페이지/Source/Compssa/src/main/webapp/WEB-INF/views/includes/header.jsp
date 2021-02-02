@@ -71,43 +71,50 @@
 		                    aria-expanded="true" aria-controls="collapse_${loop.count}" data-parent="#accordionSidebar">
 		                    <i class="fas fa-fw fa-cog"></i>
 		                    <span>${category.name}</span>
-		                </a>
+		                </a> 
+		                
 		                <div id="collapse_${loop.count}" class="collapse" aria-labelledby="heading_${loop.count}" data-parent="#accordionSidebar">
-		                    <div class="bg-white py-2 collapse-inner rounded">
-		                    	<ul class="navbar-nav accordion" style="list-style-type:none; padding-left:0">
+		                    <div class="bg-white py-2 collapse-inner rounded">		                    
+		                    	<ul class="navbar-nav accordion" style="list-style-type:none; padding-left:0">		                    		
 			                        <li class="collapse-header">Custom Components:</li>
-			                     	<c:forEach items="${categoryList}" var="category" varStatus="loop1">
-			                     		<c:set var = "parentID" value = "${category.parentID}"/>
+									<a class="collapse-item" href="${category.ID}">All ${category.name}</a>
+			                        
+			                     	<c:forEach items="${categoryList}" var="category2" varStatus="loop1">
+			                     		<c:set var = "parentID" value = "${category2.parentID}"/>
 			                     		<c:set var = "previousID" value = "${loop.count}"/>
              							<c:if test="${parentID eq previousID}">
 								        	<li class="nav-item">
 								                <a class="nav-link" href="main/main" data-toggle="collapse" data-target="#collapse_${loop.count}_${loop1.count}"
 								                    aria-expanded="true" aria-controls="collapse_${loop.count}_${loop1.count}" style="color:black; list-style-type:none; padding-left:0">
 								                    <i class="fas fa-fw fa-cog"></i>
-								                    <span>${category.name}</span>
+								                    <span>${category2.name}</span>
 								                </a>
 												<div id="collapse_${loop.count}_${loop1.count}" class="collapse" aria-labelledby="heading_${loop.count}_${loop1.count}">
 								                    <div class="bg-secondary py-2 collapse-inner rounded">
 								                    	<ul class="navbar-nav accordion" style="list-style-type:none; padding-left:0">
-															<c:forEach items="${categoryList}" var="category" varStatus="loop2">
-																<c:set var = "parentID1" value = "${category.parentID}"/>
+								                    		<a class="collapse-item" href="${category2.ID}">All ${category2.name} ${category.name}</a>
+								                    	
+															<c:forEach items="${categoryList}" var="category3" varStatus="loop2">
+																<c:set var = "parentID1" value = "${category3.parentID}"/>
 									                     		<c:set var = "previousID1" value = "${loop1.count + 1}"/>
 						             							<c:if test="${parentID1 eq previousID1}">
 														        	<li class="nav-item">
 														                <a class="nav-link" href="main/main" data-toggle="collapse" data-target="#collapse_${loop.count}_${loop1.count}_${loop2.count}"
 														                    aria-expanded="true" aria-controls="collapse_${loop.count}_${loop1.count}_${loop2.count}" style="color:black; list-style-type:none; padding-left:0">
 														                    <i class="fas fa-fw fa-cog"></i>
-														                    <span>${category.name}</span>
+														                    <span>${category3.name}</span>
 														                </a>
 																		<div id="collapse_${loop.count}_${loop1.count}_${loop2.count}" class="collapse" aria-labelledby="heading_${loop.count}_${loop1.count}_${loop2.count}">
 														                    <div class="bg- py-2 collapse-inner rounded">
 														                    	<ul class="navbar-nav accordion" style="list-style-type:none; padding-left:0">
-														                    	<c:forEach items="${categoryList}" var="category" varStatus="loop3">
-																					<c:set var = "parentID2" value = "${category.parentID}"/>
+														                    	<a class="collapse-item" href="${category3.ID}">All ${category3.name} ${category2.name} ${category.name}</a>
+														                    	
+														                    	<c:forEach items="${categoryList}" var="category4" varStatus="loop3">
+																					<c:set var = "parentID2" value = "${category4.parentID}"/>
 														                     		<c:set var = "previousID2" value = "${loop2.count + 1}"/>
 											             							<c:if test="${parentID2 eq previousID2}">
 																	                    <div class="bg- py-2 collapse-inner rounded">
-																		                	<a class="collapse-item" href="${category.ID}">${category.name}</a>
+																		                	<a class="collapse-item" href="${category4.ID}">${category4.name}</a>
 																	                    </div>
 																			    	</c:if>
 																				</c:forEach>

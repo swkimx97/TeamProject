@@ -17,7 +17,17 @@
 	
 	<select id="getProductCategory" resultType="com.compssa.domain.ProductVO">
 		<![CDATA[
-			select * from product where productcategory_ID = #{categoryID}	
+			WITH RECURSION_CTE(ID, DISTANCE_FROM_ANCESTOR) AS
+			    (SELECT ID,0 AS DISTANCE_FROM_ANCESTOR
+			        FROM productCategory
+			        WHERE ID = #{categoryID}
+			    UNION ALL
+			        SELECT productCategory.ID, RECURSION_CTE.DISTANCE_FROM_ANCESTOR + 1 AS DISTANCE_FROM_ANCESTOR
+			        FROM productCategory
+			        INNER JOIN RECURSION_CTE ON productCategory.PARENTID = RECURSION_CTE.ID
+			    )
+			SELECT product.* from product LEFT JOIN RECURSION_CTE on product.productCategory_ID = RECURSION_CTE.ID
+			WHERE RECURSION_CTE.DISTANCE_FROM_ANCESTOR = (SELECT MAX(DISTANCE_FROM_ANCESTOR) FROM RECURSION_CTE)
 		]]>
 	</select>
 	
