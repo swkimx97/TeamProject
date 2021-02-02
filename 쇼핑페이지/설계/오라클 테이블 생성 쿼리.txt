@@ -19,7 +19,7 @@ drop table ShopUser;
 create table ShopUser(
     ID INT PRIMARY KEY,
     UserName VARCHAR2(40) NOT null,
-    PW VARCHAR2(20) NOT null,
+    PW VARCHAR2(100) NOT null,
     Name VARCHAR2(20) NOT null,
     AddrNum VARCHAR2(20) NOT null,
     Addr1 VARCHAR2(50) NOT null,
@@ -137,15 +137,10 @@ create table ShopAuthorities(
     CONSTRAINT ShopUser_Authorities_fk_key FOREIGN KEY(ID) REFERENCES ShopUser(ID)
 )
 
+TRUNCATE TABLE ShopAuthorities;
 
+TRUNCATE TABLE ShopUser;
 
-insert into ShopUser (ID,UserName,PW,Name,AddrNum,Addr1,Addr2,Gender,Birth,Email,HouseNum,PhoneNum) 
-values(seq_ShopUser.NEXTVAL , 'rycbar1111','12341234' , '김김김' , '154-199' , '서울시 영등포구 신도림동' , '신동아 아파트 101동 999호' , 0  , TO_DATE('0409', 'MMDD'), 'rycbar1111@nate.com' , '02-2531-2799' , '010-5444,6222' );
-
---- 예제 인원 추가 쿼리문
-
-insert into shopauthorities (ID, Authority) values (1, 'ROLE_MANAGER');
-
---- 예제 권한 추가 쿼리문
+-- 테이블 내용 전부 삭제 쿼리문
 
 
