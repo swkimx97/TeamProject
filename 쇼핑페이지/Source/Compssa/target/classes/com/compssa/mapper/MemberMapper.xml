@@ -5,25 +5,29 @@
 <mapper namespace="com.compssa.mapper.MemberMapper">
 	<resultMap type="com.compssa.domain.ShopUserVO" id="memberMap">
 		<id property="userid" column="userid"></id>
-		<result property="userid" column="userid"></result>
-		<result property="userpw" column="userpw"></result>
+		<result property="id" column="id"></result>
+		<result property="PW" column="PW"></result>
 		<result property="userName" column="username"></result>
-		<result property="regDate" column="regdate"></result>
-		<result property="updateDate" column="updatedate"></result>
+		<result property="name" column="name"></result>
+		<result property="registerDate" column="registerDate"></result>
+		<result property="AddrNum" column="AddrNum"></result>
+		<result property="Addr1" column="Addr1"></result>
+		<result property="Addr2" column="Addr2"></result>
+		<result property="gender" column="gender"></result>
+		<result property="birth" column="birth"></result>
+		<result property="email" column="email"></result>
+		<result property="housenum" column="housenum"></result>
+		<result property="phonenum" column="phonenum"></result>
 		<collection property="authList" resultMap="authMap"></collection>		
 	</resultMap>
 	
 	<resultMap type="com.compssa.domain.AuthVO" id="authMap">
-		<result property="userid" column="userid"></result>
-		<result property="auth" column="auth"></result>
+		<result property="id" column="id"></result>
+		<result property="authority" column="authority"></result>
 	</resultMap>
 	
 	<select id="read" resultMap="memberMap">
-		select mem.userid, mem.userpw, mem.username, mem.enabled, mem.regdate, mem.updatedate,
-        auth.auth
-		from Shopuser mem left outer join ShopAuthorities auth
-		on mem.id=auth.id
-		where mem.id=#{userid}
+		select mem.username, mem.pw, mem.name, mem.registerdate, auth.authority from Shopuser mem left outer join ShopAuthorities auth on mem.id=auth.id where mem.username=#{userid}
 	</select>
 	
 </mapper>

@@ -20,9 +20,20 @@ public class CustomUser extends User{
 		super(username, password, authorities);		
 	}
 	public CustomUser(ShopUserVO vo) {
-
-		super(vo.getUserName(), vo.getPW(), vo.getAuthList().stream().map(auth->new SimpleGrantedAuthority(auth.getAuth())).collect(Collectors.toList()));
+		
+		
+		
+		super(vo.getUserName(), vo.getPW(), vo.getAuthList().stream().map(auth->new SimpleGrantedAuthority(auth.getAuthority())).collect(Collectors.toList()));
+		if(vo.getAuthList().stream().map(auth->new SimpleGrantedAuthority(auth.getAuthority())).collect(Collectors.toList()) == null) {
+			System.out.println("auth is null!!!!!!!");
+		}else {
+			System.out.println("auth is not null!!!!!!!");
+			System.out.println(vo.getAuthList().stream().map(auth->new SimpleGrantedAuthority(auth.getAuthority())).collect(Collectors.toList()));
+		}
 		this.member=vo;//member에 MemberVO를 저장. 나중에 vo에서 필요한 컬럼값(email,telephone등이 있다면)을 읽어오면됨 
+		
+		
+		
 	}
 	
 }

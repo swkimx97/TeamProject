@@ -166,6 +166,14 @@
 			</exclusions>
 			<!-- <scope>runtime</scope> -->
 		</dependency>
+		
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-test</artifactId>
+		    <version>${org.aspectj-version}</version>
+		    <scope>test</scope>
+		</dependency>
+		
 
 		<!-- @Inject -->
 		<dependency>
