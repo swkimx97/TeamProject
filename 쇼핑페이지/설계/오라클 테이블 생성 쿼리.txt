@@ -14,6 +14,10 @@ create table ShopUser(
     Privilege INT Not null,
     RegisterDate DATE default sysdate NOT null
 )
+create sequence seq_ShopUser
+    start with 1
+    increment by 1
+    NOCYCLE
 
 create table Orders(
     ID INT PRIMARY KEY,
@@ -38,6 +42,10 @@ Create table Product(
     ProductDate Date DEFAULT sysdate not null,
     CONSTRAINT Category_Product_fk_Key FOREIGN KEY(Category_ID) REFERENCES Category(ID)
 )
+create sequence seq_Product
+    start with 1
+    increment by 1
+    NOCYCLE
 
 CREATE table OrdersProduct(
     ID INT PRIMARY KEY,
@@ -52,14 +60,16 @@ CREATE table OrdersProduct(
     CONSTRAINT Orders_OrderProduct_fk_Key FOREIGN KEY(Order_ID) REFERENCES Orders(ID)
 )
 
-
-
 create table Category(
     ID INT PRIMARY KEY,
     Name VARCHAR2(40),
     Count INT,
     ParentID INT
 )
+create sequence seq_Category
+    start with 1
+    increment by 1
+    NOCYCLE
 
 create table Cart(
     ID INT PRIMARY KEY,
