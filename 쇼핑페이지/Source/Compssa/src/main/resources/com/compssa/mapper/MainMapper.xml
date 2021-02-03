@@ -12,7 +12,7 @@
 	
 	<select id="getCategoryList" resultType="com.compssa.domain.CategoryVO">
 		<![CDATA[
-			select * from ProductCategory where ID > 0 and parentID IS NULL
+			select * from ProductCategory where ID > 0
 		]]>
 	</select>
 </mapper>

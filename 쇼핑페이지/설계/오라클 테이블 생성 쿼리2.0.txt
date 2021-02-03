@@ -1,0 +1,146 @@
+drop table ReviewBoard;
+
+drop table OrdersProduct;
+
+drop table Product;
+
+drop table Cart;
+
+drop table CartProduct;
+
+drop table Category;
+
+drop table ProductQA;
+
+drop table Orders;
+
+drop table ShopUser;
+
+create table ShopUser(
+    ID INT PRIMARY KEY,
+    UserName VARCHAR2(40) NOT null,
+    PW VARCHAR2(100) NOT null,
+    Name VARCHAR2(20) NOT null,
+    AddrNum VARCHAR2(20) NOT null,
+    Addr1 VARCHAR2(50) NOT null,
+    Addr2 VARCHAR2(50) NOT null,
+    Gender INT NOT null,
+    Birth DATE NOT null,
+    Email VARCHAR2(30) Not null,
+    HouseNum VARCHAR2(30) NOT null,
+    PhoneNum VARCHAR2(20) NOT null,
+    RegisterDate DATE default sysdate NOT null
+)
+
+create sequence seq_ShopUser start with 1 increment by 1 NOCYCLE;
+
+create table Orders(
+    ID INT PRIMARY KEY,
+    OrderDate Date default sysdate Not null,
+    TotalPrice INT NOT null,
+    SenderName VARCHAR2(10) NOT null,
+    ReceiverName VARCHAR2(10) NOT null,
+    SenderAddr VARCHAR2(100) NOT null,
+    ReceiverAddr VARCHAR2(30) NOT null,
+    Payment VARCHAR2(30) NOT null,
+    ShopUser_ID INT NOT null,
+    CONSTRAINT ShopUser_Orders_fk_Key FOREIGN KEY(ShopUser_ID) REFERENCES ShopUser(ID)
+)
+
+create sequence seq_Orders start with 1 increment by 1 NOCYCLE;
+
+Create table Product(
+    ID INT PRIMARY KEY,
+    Category_ID INT Not null,
+    Name VARCHAR2(40) Not null,
+    Price INT Not null,
+    Description VARCHAR2(1000) Not null,
+    Discount INT,
+    ProductDate Date DEFAULT sysdate not null,
+    CONSTRAINT Category_Product_fk_Key FOREIGN KEY(Category_ID) REFERENCES Category(ID)
+)
+
+create sequence seq_Product start with 1 increment by 1 NOCYCLE;
+
+CREATE table OrdersProduct(
+    ID INT PRIMARY KEY,
+    Order_ID INT Not null,
+    Product_ID INT Not null,
+    Name VARCHAR2(50) not null,
+    Count INT not null,
+    Price INT not null,
+    TotalPrice INT not null,
+    Discount INT,
+    CONSTRAINT Product_OrderProduct_fk_Key FOREIGN KEY(Product_ID) REFERENCES Product(ID),
+    CONSTRAINT Orders_OrderProduct_fk_Key FOREIGN KEY(Order_ID) REFERENCES Orders(ID)
+)
+
+create table Category(
+    ID INT PRIMARY KEY,
+    Name VARCHAR2(40),
+    Count INT,
+    ParentID INT
+)
+
+create sequence seq_Category start with 1 increment by 1 NOCYCLE;
+
+create table Cart(
+    ID INT PRIMARY KEY,
+    User_ID INT not null,
+    CONSTRAINT ShopUser_Cart_fk_Key FOREIGN KEY(User_ID) REFERENCES ShopUser(ID)
+)
+
+create sequence seq_Cart start with 1 increment by 1 NOCYCLE;
+
+create table CartProduct(
+    ID INT PRIMARY KEY,
+    Cart_ID INT not null,
+    Product_ID INT Not null,
+    Count INT Not null,
+    CONSTRAINT Cart_CartProduct_fk_key FOREIGN KEY(Cart_ID) REFERENCES Cart(ID),
+    CONSTRAINT Product_CartProduct_fk_key FOREIGN KEY(Product_ID) REFERENCES Product(ID)
+)
+
+create sequence seq_CartProduct start with 1 increment by 1 NOCYCLE;
+
+create table ReviewBoard(
+    ID INT PRIMARY KEY,
+    ShopUser_ID INT not null,
+    Product_ID INT not null,
+    Title VARCHAR2(70) not null,
+    Content VARCHAR2(1200) not null,
+    Point INT not null,
+    ReviewDate DATE DEFAULT sysdate not null,
+    CONSTRAINT ShopUser_ReviewBoard_fk_key FOREIGN KEY(ShopUser_ID) REFERENCES ShopUser(ID),
+    CONSTRAINT Product_ReviewBoard_fk_key FOREIGN KEY(Product_ID) REFERENCES Product(ID)
+)
+
+create sequence seq_ReviewBoard start with 1 increment by 1 NOCYCLE;
+
+create table ProductQA(
+    ID INT not null,
+    ShopUser_ID INT not null,
+    Product_ID INT not null,
+    QADate DATE DEFAULT sysdate not null,
+    Title VARCHAR2(120) not null,
+    Content VARCHAR2(2000) not null,
+    CONSTRAINT ShopUser_ProductQA_fk_key FOREIGN KEY(ShopUser_ID) REFERENCES ShopUser(ID),
+    CONSTRAINT Product_ProductQA_fk_key FOREIGN KEY(Product_ID) REFERENCES Product(ID)
+)
+
+
+create sequence seq_ProductQA start with 1 increment by 1 NOCYCLE;
+
+create table ShopAuthorities(
+    ID INT not null,
+    Authority VARCHAR2(40),
+    CONSTRAINT ShopUser_Authorities_fk_key FOREIGN KEY(ID) REFERENCES ShopUser(ID)
+)
+
+TRUNCATE TABLE ShopAuthorities;
+
+TRUNCATE TABLE ShopUser;
+
+-- 테이블 내용 전부 삭제 쿼리문
+
+

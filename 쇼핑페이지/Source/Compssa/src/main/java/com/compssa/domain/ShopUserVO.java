@@ -2,6 +2,7 @@ package com.compssa.domain;
 
 import lombok.Data;
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class ShopUserVO {
@@ -17,6 +18,7 @@ public class ShopUserVO {
 	private String Email;
 	private String HouseNum;
 	private String PhoneNum;
-	private int Privilege;
 	private Date RegisterDate;
+	private List<AuthVO> AuthList;
+	
 }

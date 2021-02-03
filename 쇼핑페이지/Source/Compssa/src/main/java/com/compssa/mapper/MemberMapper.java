@@ -1,5 +1,7 @@
 package com.compssa.mapper;
 
-public class MemberMapper {
+import com.compssa.domain.ShopUserVO;
 
+public interface MemberMapper {
+	public ShopUserVO read(String userid);
 }
