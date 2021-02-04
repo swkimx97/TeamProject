@@ -23,7 +23,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 		});
 		
 		if(roleNames.contains("ROLE_ADMIN")) {
-			response.sendRedirect("/sample/admin");
+			response.sendRedirect("/main/main");
 			return;
 		}
 		else if(roleNames.contains("ROLE_MEMBER")) {
@@ -35,6 +35,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 			return;
 		}
 		response.sendRedirect("/main/main");
+		return;
 	}
 
 }

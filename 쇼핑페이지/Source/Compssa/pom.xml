@@ -194,6 +194,8 @@
 			<version>1.18.0</version>
 			<scope>provided</scope>
 		</dependency>
+		
+		
 
 
 		<!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
@@ -282,6 +284,13 @@
 		<artifactId>quartz-jobs</artifactId>
 		<version>2.3.0</version>
 	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc6 -->
+		<dependency>
+		    <groupId>com.oracle.database.jdbc</groupId>
+		    <artifactId>ojdbc6</artifactId>
+		    <version>11.2.0.4</version>
+		</dependency>
 
 	</dependencies>
 	<build>

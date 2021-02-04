@@ -22,12 +22,12 @@
 	</resultMap>
 	
 	<resultMap type="com.compssa.domain.AuthVO" id="authMap">
-		<result property="id" column="id"></result>
+		<result property="username" column="username"></result>
 		<result property="authority" column="authority"></result>
 	</resultMap>
 	
 	<select id="read" resultMap="memberMap">
-		select mem.username, mem.pw, mem.name, mem.registerdate, auth.authority from Shopuser mem left outer join ShopAuthorities auth on mem.id=auth.id where mem.username=#{userid}
+		select mem.username, mem.pw, mem.name, mem.registerdate, auth.authority from Shopuser mem left outer join ShopAuthorities auth on mem.username=auth.username where mem.username=#{userid}
 	</select>
 	
 </mapper>
