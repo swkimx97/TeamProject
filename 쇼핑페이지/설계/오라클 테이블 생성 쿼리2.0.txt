@@ -132,9 +132,9 @@ create table ProductQA(
 create sequence seq_ProductQA start with 1 increment by 1 NOCYCLE;
 
 create table ShopAuthorities(
-    ID INT not null,
+    UserName VARCHAR2(40) not null,
     Authority VARCHAR2(40),
-    CONSTRAINT ShopUser_Authorities_fk_key FOREIGN KEY(ID) REFERENCES ShopUser(ID)
+    CONSTRAINT ShopUser_Authorities_fk_key FOREIGN KEY(UserName) REFERENCES ShopUser(UserName)
 )
 
 TRUNCATE TABLE ShopAuthorities;
